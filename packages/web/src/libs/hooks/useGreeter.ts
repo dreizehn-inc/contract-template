@@ -5,11 +5,11 @@ export const useGreeter = (contract: ethers.Contract) => {
   const { greet } = contract.functions
   const [greeting, setGreeting] = useState<string>('')
   useEffect(() => {
-    const getTaskCount = async () => {
+    const getGreeting = async () => {
       const greeting = await greet()
       setGreeting(greeting)
     }
-    getTaskCount()
+    getGreeting()
   }, [])
 
   return { greeting }
