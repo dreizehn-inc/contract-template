@@ -1,5 +1,5 @@
 {
-  "name": "@matcha-cream/web",
+  "name": "@web3-boiler/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "@matcha-cream/contract": "0.0.1"
+    "@web3-boiler/contract": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

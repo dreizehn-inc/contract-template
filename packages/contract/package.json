@@ -1,5 +1,5 @@
 {
-  "name": "@matcha-cream/contract",
+  "name": "@web3-boiler/contract",
   "version": "0.0.1",
   "private": true,
   "main": "cjs/index.js",

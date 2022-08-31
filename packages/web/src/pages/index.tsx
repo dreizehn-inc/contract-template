@@ -6,10 +6,10 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>MATCHA CREAM</title>
+        <title>Web3 Boiler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>MATCHA CREAM</h1>
+      <h1>Web3 Boiler</h1>
     </>
   )
 }

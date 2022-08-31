@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useContent } from 'src/libs/hooks/useTodoList'
-import { MatchaCreamSDK } from '@matcha-cream/contract'
+import { Web3BoilerSDK } from '@web3-boiler/contract'
 import { useMetaMask } from 'src/libs/hooks/useMetaMask'
 
 interface ContentProps {
@@ -33,12 +33,12 @@ const Sample: NextPage = () => {
   return (
     <>
       <Head>
-        <title>MATCHA CREAM</title>
+        <title>Web3 Boiler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>sample</h1>
-      <Content contract={MatchaCreamSDK.TodoList.contract} />
-      <ContentConnectWallet contract={MatchaCreamSDK.Greeter.contract} />
+      <Content contract={Web3BoilerSDK.TodoList.contract} />
+      <ContentConnectWallet contract={Web3BoilerSDK.Greeter.contract} />
     </>
   )
 }

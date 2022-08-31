@@ -1,4 +1,4 @@
-# MATCHA CREAM
+# Web3 Boiler
 
 ## Decentralized NFT Trading Application
 
@@ -26,8 +26,8 @@ $ yarn
 $ yarn build
 
 # ローカルネットの起動
-$ yarn workspace @matcha-cream/contract start:node
+$ yarn workspace @web3-boiler/contract start:node
 
 # frontendの起動
-$ yarn workspace @matcha-cream/web start:node
+$ yarn workspace @web3-boiler/web start:node
 ```

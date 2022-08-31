@@ -1,1 +1,1 @@
-export * as MatchaCreamSDK from './src'
+export * as Web3BoilerSDK from './src'
