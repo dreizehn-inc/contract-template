@@ -22,7 +22,7 @@
 # install
 $ yarn
 
-# build (lernaで全てのpackageのbuildが走ります)
+# build
 $ yarn build
 
 # ローカルネットの起動

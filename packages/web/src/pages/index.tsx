@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import React from 'react'
+import type { NextPage } from 'next'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const Home: NextPage = () => {
       </Head>
       <h1>MATCHA CREAM</h1>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

@@ -11,3 +11,6 @@ dist
 
 #yarn
 yarn-error.log
+
+# turbo
+.turbo
