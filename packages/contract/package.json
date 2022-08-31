@@ -13,6 +13,7 @@
     "build:esm": "tsc --project . --module es2015 --outDir ./esm",
     "clean": "rimraf esm cjs",
     "start:node": "hardhat node",
+    "console": "hardhat console",
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy": "hardhat run scripts/deploy.ts --network localhost"
