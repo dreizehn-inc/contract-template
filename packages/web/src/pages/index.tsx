@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { ethers } from 'ethers'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -8,23 +8,64 @@ import { Web3BoilerSDK } from '@web3-boiler/contract'
 const contractAddress = process.env.NEXT_PUBLIC_GREETER_CONTRACT_ADDRESS || ''
 
 interface ContentProps {
-  contract: ethers.Contract
+  address: string
+  signer: ethers.providers.JsonRpcSigner
 }
 
-const Content = ({ contract }: ContentProps) => {
-  const { greeting } = useGreeter(contract)
-  return <p>{`Greeting ... ${greeting}`}</p>
+const Content = (props: ContentProps) => {
+  const [text, setText] = useState('')
+  const contract = Web3BoilerSDK.Greeter(contractAddress, props.signer).contract
+  const { message, fetchMessage, setGreeting } = useGreeter(contract)
+
+  const handleFetchMessage = async () => {
+    await fetchMessage()
+  }
+
+  const handleChange = (event: ChangeEvent) => {
+    // @ts-ignore
+    setText(event.target.value)
+  }
+  const handleSetGreeting = async (e: FormEvent) => {
+    e.preventDefault()
+    await setGreeting(text)
+  }
+  return (
+    <div style={{ paddingTop: '12px' }}>
+      <div>Address: {props.address}</div>
+      <button onClick={handleFetchMessage}>fetch message</button>
+      <p>{`Greeting ... ${message}`}</p>
+
+      <form onSubmit={handleSetGreeting}>
+        <div>
+          <label>Enter New Greet: </label>
+          <input type="text" required onChange={handleChange} />
+        </div>
+        <div>
+          <input type="submit" value="Update!" />
+        </div>
+      </form>
+    </div>
+  )
 }
 
 const Sample: NextPage = () => {
+  const [address, setAddress] = useState('')
+  const [signer, setSigner] = useState<ethers.providers.JsonRpcSigner>()
+  const handleConnect = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const accounts = await provider.send('eth_requestAccounts', [])
+    setAddress(accounts)
+    setSigner(provider.getSigner())
+  }
   return (
     <>
       <Head>
         <title>Web3 Boiler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>sample</h1>
-      <Content contract={Web3BoilerSDK.Greeter(contractAddress).contract} />
+      <h1>Web3 Boiler</h1>
+      <button onClick={handleConnect}>connect</button>
+      {signer && <Content signer={signer} address={address} />}
     </>
   )
 }
