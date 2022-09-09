@@ -3,9 +3,6 @@ import { ethers } from 'ethers'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useGreeter } from 'src/libs/hooks/useGreeter'
-import { Web3BoilerSDK } from '@web3-boiler/contract'
-
-const contractAddress = process.env.NEXT_PUBLIC_GREETER_CONTRACT_ADDRESS || ''
 
 interface ContentProps {
   address: string
@@ -14,8 +11,7 @@ interface ContentProps {
 
 const Content = (props: ContentProps) => {
   const [text, setText] = useState('')
-  const contract = Web3BoilerSDK.Greeter(contractAddress, props.signer).contract
-  const { message, fetchMessage, setGreeting } = useGreeter(contract)
+  const { message, fetchMessage, setGreeting } = useGreeter(props.signer)
 
   const handleFetchMessage = async () => {
     await fetchMessage()
