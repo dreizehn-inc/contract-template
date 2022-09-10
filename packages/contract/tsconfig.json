@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
-    "target": "es6",
+    "target": "es5",
+    "lib": ["dom", "es2018"],
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
@@ -16,8 +13,6 @@
     "pretty": true,
     "newLine": "lf",
     "esModuleInterop": true,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true
+    "moduleResolution": "node"
   }
 }
