@@ -1,2 +1,1 @@
-export * from './greeter'
-export * from './todoList'
+export * from './generated'

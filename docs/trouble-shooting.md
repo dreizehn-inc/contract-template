@@ -19,3 +19,13 @@ $ yarn workspace @web3-boiler/contract start:node
 $ yarn workspace @web3-boiler/contract deploy
 
 ```
+
+## Metamask 関連
+
+### 1. Nonce too high. エラー
+
+```
+[ethjs-query] while formatting outputs from RPC '{"value":{"code":-32603,"data":{"code":-32000,"message":"Nonce too high. Expected nonce to be 2 but got 5. Note that transactions can't be queued when automining."}}}'
+```
+
+Metamask のアカウントリセットを行うことで解消できます。
