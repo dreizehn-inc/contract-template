@@ -1,0 +1,21 @@
+{
+  "name": "@web3-boiler/slides",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "marp --html --server .",
+    "export": "run-p -l export:*",
+    "export:pdf": "marp slides.md -o ./assets/Requirements.pdf",
+    "export:pptx": "marp slides.md -o ./assets/Requirements.pptx",
+    "export:html": "marp slides.md -o ./assets/Requirements.html"
+  },
+  "dependencies": {
+    "@marp-team/marp-cli": "latest",
+    "@slidev/cli": "0.36.4",
+    "@slidev/theme-default": "*",
+    "@slidev/theme-seriph": "*"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.25.2"
+  }
+}
