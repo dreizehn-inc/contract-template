@@ -1,1 +1,1 @@
-export * as Web3BoilerSDK from './typechain'
+export * as Web3BoilerSDK from './src'
