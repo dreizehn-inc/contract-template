@@ -1,5 +1,8 @@
 ---
 marp: true
+theme: gaia
+header: ''
+footer: '©︎2022 **Dreizehn, Ltd.**'
 ---
 
 <!--
