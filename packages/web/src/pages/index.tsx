@@ -23,7 +23,10 @@ const Content = (props: ContentProps) => {
   }
   const handleSetGreeting = async (e: FormEvent) => {
     e.preventDefault()
-    await setGreeting(text)
+    const tx = await setGreeting(text)
+    const receipt = await tx.wait()
+    // eslint-disable-next-line no-console
+    console.log(receipt)
   }
   return (
     <div style={{ paddingTop: '12px' }}>
