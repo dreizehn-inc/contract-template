@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useGreeter } from 'src/libs/hooks/useGreeter'
+import { useNFT } from 'src/libs/hooks/useNFT'
 
 interface ContentProps {
   address: string
@@ -11,10 +12,16 @@ interface ContentProps {
 
 const Content = (props: ContentProps) => {
   const [text, setText] = useState('')
+
   const { message, fetchMessage, setGreeting } = useGreeter(props.signer)
+  const { mint, uri, fetchTokenURI } = useNFT(props.signer)
 
   const handleFetchMessage = async () => {
     await fetchMessage()
+  }
+
+  const handleFetchTokenURI = async () => {
+    await fetchTokenURI()
   }
 
   const handleChange = (event: ChangeEvent) => {
@@ -28,11 +35,20 @@ const Content = (props: ContentProps) => {
     // eslint-disable-next-line no-console
     console.log(receipt)
   }
+  const handleRandomMint = async () => {
+    const tx = await mint('https://www.google.com')
+    const receipt = await tx.wait()
+    // eslint-disable-next-line no-console
+    console.log(receipt)
+  }
   return (
     <div style={{ paddingTop: '12px' }}>
       <div>Address: {props.address}</div>
       <button onClick={handleFetchMessage}>fetch message</button>
       <p>{`Greeting ... ${message}`}</p>
+      <button onClick={handleFetchTokenURI}>fetch token uri</button>
+      <button onClick={handleRandomMint}>mint</button>
+      <p>{`TokenURI ... ${uri}`}</p>
 
       <form onSubmit={handleSetGreeting}>
         <div>
