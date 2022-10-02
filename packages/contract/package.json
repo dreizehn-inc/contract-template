@@ -10,7 +10,7 @@
     "build": "run-p -l build:*",
     "build:cjs": "tsc --project . --module commonjs --outDir ./cjs",
     "build:esm": "tsc --project . --module es2015 --outDir ./esm",
-    "clean": "rimraf esm cjs artifacts",
+    "clean": "rimraf esm cjs artifacts src/generated",
     "start:node": "hardhat node",
     "console": "hardhat console",
     "compile": "hardhat compile",
@@ -21,6 +21,8 @@
     "@nomiclabs/hardhat-ethers": "2.0.5",
     "@nomiclabs/hardhat-etherscan": "3.0.3",
     "@nomiclabs/hardhat-waffle": "2.0.3",
+    "@openzeppelin/contracts": "^4.7.3",
+    "@openzeppelin/hardhat-upgrades": "^1.21.0",
     "@typechain/ethers-v5": "10.1.0",
     "@typechain/hardhat": "2.3.1",
     "@types/chai": "4.3.0",
@@ -44,10 +46,11 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.5.1",
     "prettier-plugin-solidity": "1.0.0-beta.13",
+    "solc": "^0.8.17",
     "solhint": "3.3.7",
     "solidity-coverage": "0.7.20",
     "ts-node": "10.7.0",
-    "typechain": "5.2.0",
+    "typechain": "8.1.0",
     "typescript": "4.6.2"
   }
 }
