@@ -1,0 +1,15 @@
+{
+  "name": "@web3-boiler/uml",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf ./assets/*",
+    "preexport": "yarn clean",
+    "export": "run-p -l export:*",
+    "export:create": "mmdc -i ./src/wallet-create-sequence.md -o ./assets/wallet-create-sequenc.png"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "9.1.7"
+  }
+}
