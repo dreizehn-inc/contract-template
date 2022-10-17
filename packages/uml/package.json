@@ -6,7 +6,8 @@
     "clean": "rimraf ./assets/*",
     "preexport": "yarn clean",
     "export": "run-p -l export:*",
-    "export:create": "mmdc -i ./src/wallet-create-sequence.md -o ./assets/wallet-create-sequenc.png"
+    "export:wallet-create": "mmdc -i ./src/wallet-create-sequence.md -o ./assets/wallet-create-sequence.png",
+    "export:credit-card-payment": "mmdc -i ./src/credit-card-payment-sequence.md -o ./assets/credit-card-payment-sequence.png"
   },
   "dependencies": {},
   "devDependencies": {

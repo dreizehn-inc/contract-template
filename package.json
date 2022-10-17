@@ -40,5 +40,11 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "config": {
+    "puppeteer_download_path": "./node_modules/puppeteer/.local-chromium"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
