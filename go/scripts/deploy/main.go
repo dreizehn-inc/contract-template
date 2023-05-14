@@ -49,8 +49,8 @@ func main() {
 		panic(err)
 	}
 	auth.Nonce = big.NewInt(int64(nonce))
-	auth.Value = big.NewInt(0)     // in wei
-	auth.GasLimit = uint64(300000) // in units
+	auth.Value = big.NewInt(0)       // in wei
+	auth.GasLimit = uint64(35000000) // in units
 	auth.GasPrice = gasPrice
 
 	factoryCli, err := factory_contract.NewFactory(common.HexToAddress(e.FactoryContractAddress), cli)
