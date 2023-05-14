@@ -1,41 +1,105 @@
-/* eslint-disable no-console */
-
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
 import { ethers } from 'hardhat'
 
+import { RoleManagerStore, ERC721Dreizehn } from '../src'
+
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+  /*
+    1. Role Contract & RoleManagerStore Contract のデプロイ
+  */
+  const [owner] = await ethers.getSigners()
 
-  // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory('Greeter')
-  const greeter = await Greeter.deploy('Hello, Hardhat!')
+  const role = await ethers.getContractFactory('Role')
+  const roleContract = await role.deploy()
 
-  await greeter.deployed()
+  console.log('Role deployed to:', roleContract.address)
 
-  console.log('Greeter deployed to:', greeter.address)
+  const roleManagerStore = await ethers.getContractFactory('RoleManagerStore')
+  let roleManagerStoreContract: RoleManagerStore
+  let erc721DreizehnContract: ERC721Dreizehn
 
-  const TodoList = await ethers.getContractFactory('TodoList')
-  const todoList = await TodoList.deploy()
-  await todoList.deployed()
-  console.log('todoList deployed to:', todoList.address)
+  if (process.env.DEPLOY_ENV === 'prd') {
+    // 本番環境にデプロイする場合は環境変数からアドレスを取得する
+    if (!process.env.OWNER_ADDRESS || !process.env.OPERATOR_ADDRESS || !process.env.TOKEN_MANAGER_ADDRESS) {
+      throw new Error('environment variable not set')
+    }
+    const ownerAddr = process.env.OWNER_ADDRESS
+    const operatorAddr = process.env.OPERATOR_ADDRESS
+    const tokenManagerAddr = process.env.TOKEN_MANAGER_ADDRESS
+    roleManagerStoreContract = await roleManagerStore.deploy(ownerAddr, operatorAddr, tokenManagerAddr)
+    console.log('=== prd Deploy ===')
+    console.log('Owner Address:', ownerAddr)
+    console.log('Operator Address:', operatorAddr)
+    console.log('Token Manager Address:', tokenManagerAddr)
+  } else {
+    // ローカル環境にデプロイする場合はhardhatで生成したownerアドレスを利用する
+    roleManagerStoreContract = await roleManagerStore.deploy(owner.address, owner.address, owner.address)
+    console.log('=== Local Deploy ===')
+    console.log('Owner & Operator & Token Manager Addresses:', owner.address)
+  }
 
-  const NFT = await ethers.getContractFactory('NFT')
-  const nft = await NFT.deploy()
-  await nft.deployed()
-  console.log('nft deployed to:', nft.address)
+  console.log('RoleManagerStore deployed to:', roleManagerStoreContract.address)
+
+  /*
+    2. Factory Contract のデプロイ
+  */
+  const factory = await ethers.getContractFactory('Factory')
+  const factoryContract = await factory.deploy(roleManagerStoreContract.address)
+
+  console.log('Factory deployed to:', factoryContract.address)
+
+  /*
+    3. Factory Contract を利用して ERC721Dreizehn Contract をデプロイ
+    別のNFTをデプロイする場合は引数を変えることでこのFactory Contractからデプロイすることが可能
+  */
+  const salt = ethers.utils.randomBytes(32)
+  await factoryContract.deploy(
+    'Visualize NFT (Example)',
+    'VNFT',
+    'http://example.com/',
+    '.json',
+    roleManagerStoreContract.address,
+    salt
+  )
+  const erc721DreizehnContractAddr = await factoryContract.calcAddress(
+    'Visualize NFT (Example)',
+    'VNFT',
+    'http://example.com/',
+    '.json',
+    roleManagerStoreContract.address,
+    salt
+  )
+
+  const nftFactory = await ethers.getContractFactory('ERC721Dreizehn')
+  erc721DreizehnContract = nftFactory.attach(erc721DreizehnContractAddr)
+  // 2次流通を制限する
+  await erc721DreizehnContract.enableRestrictedTransfer()
+
+  console.log('ERC721DreizehnContract deployed to:', erc721DreizehnContractAddr)
+  console.log(
+    'ERC721DreizehnContract restrictedTransferEnabled:',
+    await erc721DreizehnContract.restrictedTransferEnabled()
+  )
+
+  /*
+    4. marketForOffchainPayment Contract のデプロイ
+  */
+  const marketForOffchainPayment = await ethers.getContractFactory('MarketForOffchainPayment')
+  const marketForOffchainPaymentContract = await marketForOffchainPayment.deploy(roleManagerStoreContract.address)
+
+  // MarketForOffchainPaymentにTokenManager権限を付与する
+  await roleManagerStoreContract.setTokenManager(marketForOffchainPaymentContract.address)
+
+  console.log('MarketForOffchainPaymentContract deployed to:', marketForOffchainPaymentContract.address)
+
+  /*
+    5. サンプル用の Greeter Contract のデプロイ
+  */
+  const greeter = await ethers.getContractFactory('Greeter')
+  const greeterContract = await greeter.deploy('Hello, Hardhat!')
+
+  console.log('GreeterContract deployed to:', greeterContract.address)
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch(error => {
   console.error(error)
   process.exitCode = 1

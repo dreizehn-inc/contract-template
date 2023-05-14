@@ -1,1 +1,1 @@
-export * as Web3BoilerSDK from './src'
+export * as NFTMarketContractSDK from './src'
