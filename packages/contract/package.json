@@ -17,6 +17,7 @@
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
     "deploy:goerli": "hardhat run scripts/sample-deploy.ts --network goerli",
+    "deploy:mumbai": "hardhat run scripts/sample-deploy.ts --network mumbai",
     "lint": "eslint --fix 'src/**/{*.ts,*.tsx}'"
   },
   "devDependencies": {

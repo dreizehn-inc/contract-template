@@ -39,13 +39,18 @@ const config: HardhatUserConfig = {
     ropsten: {
       chainId: 1337,
       url: process.env.ROPSTEN_URL || 'http://localhost:8545',
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
+      accounts: process.env.WALLET_PRIVATE_KEY !== undefined ? [process.env.WALLET_PRIVATE_KEY] : []
     },
     goerli: {
       chainId: 5,
       url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      accounts: process.env.WALLET_PRIVATE_KEY !== undefined ? [process.env.WALLET_PRIVATE_KEY] : [],
       gasPrice: 20000000000 // 20 Gwei
+    },
+    mumbai: {
+      chainId: 80001,
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.INFURA_API_KEY}`,
+      accounts: process.env.WALLET_PRIVATE_KEY !== undefined ? [process.env.WALLET_PRIVATE_KEY] : []
     }
   },
   gasReporter: {
