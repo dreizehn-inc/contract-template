@@ -53,7 +53,7 @@ async function main() {
   */
   const salt = ethers.utils.randomBytes(32)
   await factoryContract.deploy(
-    'Visualize NFT (Example)',
+    'Dreizehn NFT (Example)',
     'VNFT',
     'http://example.com/',
     '.json',
@@ -61,7 +61,7 @@ async function main() {
     salt
   )
   const erc721DreizehnContractAddr = await factoryContract.calcAddress(
-    'Visualize NFT (Example)',
+    'Dreizehn NFT (Example)',
     'VNFT',
     'http://example.com/',
     '.json',
