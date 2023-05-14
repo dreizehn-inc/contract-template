@@ -21,13 +21,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IAccessControl__factory>;
     getContractFactory(
+      name: "Pausable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Pausable__factory>;
+    getContractFactory(
       name: "ERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC721__factory>;
     getContractFactory(
-      name: "ERC721URIStorage",
+      name: "ERC721Burnable",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC721URIStorage__factory>;
+    ): Promise<Contracts.ERC721Burnable__factory>;
+    getContractFactory(
+      name: "ERC721Enumerable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Enumerable__factory>;
+    getContractFactory(
+      name: "IERC721Enumerable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Enumerable__factory>;
     getContractFactory(
       name: "IERC721Metadata",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -49,17 +61,57 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
+      name: "ERC721Dreizehn",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Dreizehn__factory>;
+    getContractFactory(
+      name: "ERC721LatePermit",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721LatePermit__factory>;
+    getContractFactory(
+      name: "ERC721Visualize",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Visualize__factory>;
+    getContractFactory(
+      name: "Factory",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Factory__factory>;
+    getContractFactory(
       name: "Greeter",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Greeter__factory>;
     getContractFactory(
-      name: "NFT",
+      name: "IAccessControl",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.NFT__factory>;
+    ): Promise<Contracts.IAccessControl__factory>;
     getContractFactory(
-      name: "TodoList",
+      name: "IERC721Dreizehn",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.TodoList__factory>;
+    ): Promise<Contracts.IERC721Dreizehn__factory>;
+    getContractFactory(
+      name: "IERC721Visualize",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Visualize__factory>;
+    getContractFactory(
+      name: "Role",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Role__factory>;
+    getContractFactory(
+      name: "IERC721WithPermit",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721WithPermit__factory>;
+    getContractFactory(
+      name: "MarketForOffchainPayment",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MarketForOffchainPayment__factory>;
+    getContractFactory(
+      name: "RoleManager",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.RoleManager__factory>;
+    getContractFactory(
+      name: "RoleManagerStore",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.RoleManagerStore__factory>;
 
     getContractAt(
       name: "AccessControl",
@@ -72,15 +124,30 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IAccessControl>;
     getContractAt(
+      name: "Pausable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Pausable>;
+    getContractAt(
       name: "ERC721",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.ERC721>;
     getContractAt(
-      name: "ERC721URIStorage",
+      name: "ERC721Burnable",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC721URIStorage>;
+    ): Promise<Contracts.ERC721Burnable>;
+    getContractAt(
+      name: "ERC721Enumerable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Enumerable>;
+    getContractAt(
+      name: "IERC721Enumerable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Enumerable>;
     getContractAt(
       name: "IERC721Metadata",
       address: string,
@@ -107,20 +174,70 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
+      name: "ERC721Dreizehn",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Dreizehn>;
+    getContractAt(
+      name: "ERC721LatePermit",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721LatePermit>;
+    getContractAt(
+      name: "ERC721Visualize",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Visualize>;
+    getContractAt(
+      name: "Factory",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Factory>;
+    getContractAt(
       name: "Greeter",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Greeter>;
     getContractAt(
-      name: "NFT",
+      name: "IAccessControl",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.NFT>;
+    ): Promise<Contracts.IAccessControl>;
     getContractAt(
-      name: "TodoList",
+      name: "IERC721Dreizehn",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.TodoList>;
+    ): Promise<Contracts.IERC721Dreizehn>;
+    getContractAt(
+      name: "IERC721Visualize",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Visualize>;
+    getContractAt(
+      name: "Role",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Role>;
+    getContractAt(
+      name: "IERC721WithPermit",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721WithPermit>;
+    getContractAt(
+      name: "MarketForOffchainPayment",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MarketForOffchainPayment>;
+    getContractAt(
+      name: "RoleManager",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.RoleManager>;
+    getContractAt(
+      name: "RoleManagerStore",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.RoleManagerStore>;
 
     // default types
     getContractFactory(

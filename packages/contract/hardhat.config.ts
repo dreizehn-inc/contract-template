@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
-
 import { HardhatUserConfig, task } from 'hardhat/config'
+
 import '@openzeppelin/hardhat-upgrades'
 import '@typechain/hardhat'
 import '@nomiclabs/hardhat-etherscan'
@@ -26,11 +26,26 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: '0.8.4',
+  solidity: {
+    version: '0.8.9',
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000
+      }
+    }
+  },
   networks: {
     ropsten: {
-      url: process.env.ROPSTEN_URL || '',
+      chainId: 1337,
+      url: process.env.ROPSTEN_URL || 'http://localhost:8545',
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
+    },
+    goerli: {
+      chainId: 5,
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 20000000000 // 20 Gwei
     }
   },
   gasReporter: {
