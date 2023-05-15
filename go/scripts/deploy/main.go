@@ -19,6 +19,7 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
 	e := &environment.Environment{}
 	if err := env.Parse(e); err != nil {
 		panic(err)
@@ -40,18 +41,37 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	gasPrice, err := cli.SuggestGasPrice(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
 	auth, err := bind.NewKeyedTransactorWithChainID(privateKey, big.NewInt(int64(e.ChainID)))
 	if err != nil {
 		panic(err)
 	}
 	auth.Nonce = big.NewInt(int64(nonce))
-	auth.Value = big.NewInt(0)       // in wei
-	auth.GasLimit = uint64(35000000) // in units
-	auth.GasPrice = gasPrice
+	auth.Value = big.NewInt(0) // in wei
+
+	tip, err := cli.SuggestGasTipCap(ctx)
+	if err != nil {
+		panic(err)
+	}
+	latestBlockNumber, err := cli.BlockNumber(ctx)
+	if err != nil {
+		panic(err)
+	}
+	latestBlock, err := cli.BlockByNumber(ctx, big.NewInt(int64(latestBlockNumber)))
+	if err != nil {
+		panic(err)
+	}
+	maxFeeCap := new(big.Int).
+		Sub(
+			new(big.Int).
+				Add(
+					tip,
+					latestBlock.BaseFee(),
+				),
+			big.NewInt(1),
+		)
+
+	auth.GasFeeCap = maxFeeCap
+	auth.GasTipCap = tip
 
 	factoryCli, err := factory_contract.NewFactory(common.HexToAddress(e.FactoryContractAddress), cli)
 	if err != nil {
