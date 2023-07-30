@@ -1,0 +1,4 @@
+---
+message: |
+  hygen module new
+---
