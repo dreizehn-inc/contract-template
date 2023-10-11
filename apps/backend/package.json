@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@nestjs/testing": "9.4.0",
-    "@types/aws4": "1.11.2",
+    "@types/aws4": "1.11.4",
     "@types/bcrypt": "5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/country-list": "^2.1.1",
