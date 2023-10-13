@@ -32,10 +32,10 @@
     "@fastify/cookie": "^8.3.0",
     "@nestjs-addons/in-memory-db": "3.0.3",
     "@nestjs/axios": "2.0.0",
-    "@nestjs/common": "9.4.0",
+    "@nestjs/common": "9.4.3",
     "@nestjs/config": "2.3.4",
-    "@nestjs/core": "9.4.0",
-    "@nestjs/platform-express": "9.4.0",
+    "@nestjs/core": "9.4.3",
+    "@nestjs/platform-express": "9.4.3",
     "@nestjs/swagger": "6.3.0",
     "@nestjs/terminus": "9.2.2",
     "@nestjs/typeorm": "9.0.1",
@@ -75,7 +75,7 @@
     "yargs": "17.7.1"
   },
   "devDependencies": {
-    "@nestjs/testing": "9.4.0",
+    "@nestjs/testing": "9.4.3",
     "@types/aws4": "1.11.4",
     "@types/bcrypt": "5.0.0",
     "@types/cookie-parser": "^1.4.3",
