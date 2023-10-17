@@ -70,7 +70,7 @@
     "rxjs": "7.8.1",
     "swagger-ui-express": "4.6.3",
     "typeorm": "0.3.17",
-    "uuid": "9.0.0",
+    "uuid": "9.0.1",
     "winston": "3.8.2",
     "yargs": "17.7.2"
   },
@@ -85,7 +85,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "18.15.11",
     "@types/rimraf": "4.0.5",
-    "@types/uuid": "9.0.1",
+    "@types/uuid": "9.0.5",
     "@types/yargs": "17.0.28",
     "eslint-plugin-prettier": "4.2.1",
     "redoc-cli": "0.13.21"
