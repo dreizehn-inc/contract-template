@@ -15,7 +15,7 @@
     "@emotion/styled": "11.10.6",
     "@nft-market/contract": "workspace:*",
     "@nft-market/http-client": "workspace:*",
-    "@web3modal/ethereum": "2.2.2",
+    "@web3modal/ethereum": "2.7.1",
     "@web3modal/react": "2.2.2",
     "ethers": "5.7.2",
     "framer-motion": "10.11.2",
