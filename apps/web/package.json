@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@chakra-ui/react": "2.5.5",
+    "@chakra-ui/react": "2.8.1",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@nft-market/contract": "workspace:*",
