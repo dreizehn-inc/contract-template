@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@marp-team/marp-cli": "latest",
-    "@slidev/cli": "0.36.4",
+    "@slidev/cli": "0.43.7",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
   },
