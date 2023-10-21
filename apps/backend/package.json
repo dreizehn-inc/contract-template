@@ -85,7 +85,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "18.15.11",
     "@types/rimraf": "4.0.5",
-    "@types/uuid": "9.0.5",
+    "@types/uuid": "9.0.6",
     "@types/yargs": "17.0.28",
     "eslint-plugin-prettier": "4.2.1",
     "redoc-cli": "0.13.21"
