@@ -2298,10 +2298,10 @@
   resolved "https://registry.yarnpkg.com/@mdit-vue/types/-/types-0.12.0.tgz#096ff57d3590d076f7d7561dbc9956fb0bb89fe1"
   integrity sha512-mrC4y8n88BYvgcgzq9bvTlDgFyi2zuvzmPilRvRc3Uz1iIvq8mDhxJ0rHKFUNzPEScpDvJdIujqiDrulMqiudA==
 
-"@mermaid-js/mermaid-cli@10.5.0":
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/@mermaid-js/mermaid-cli/-/mermaid-cli-10.5.0.tgz#4e0f4189b5fe13aa127318e5c0cc2204dd88e183"
-  integrity sha512-sZ8ec+zK0tBpyyIZ1QbWsvlecIMxHL9MQAxJCwxmp5nB3PN9m4uFeVpAV86Eec0Ivuu3kiyijNkK2zdZnWXXFA==
+"@mermaid-js/mermaid-cli@10.5.1":
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/@mermaid-js/mermaid-cli/-/mermaid-cli-10.5.1.tgz#69c1ffc144f019e462cc05252fdfbb2852e10a11"
+  integrity sha512-2Hoft3YhwIJrqK1YLg26/U676lf/9SqBrVNNbNRw6LnT85on2K1+GI2qsEm10UmBJDPouoBuXCdAfpi9O3BCQg==
   dependencies:
     chalk "^5.0.1"
     commander "^10.0.0"
